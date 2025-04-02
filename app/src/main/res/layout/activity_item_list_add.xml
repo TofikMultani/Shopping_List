@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <!-- Top Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:background="@color/navy">
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/ilsaveback"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back1"
+            android:contentDescription="Back Button"
+            android:layout_marginEnd="10dp"/>
+
+        <!-- App Logo -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logo"
+            android:contentDescription="Logo"
+            android:layout_weight="1"/>
+
+        <!-- Profile Icon -->
+        <ImageView
+            android:id="@+id/ilaccsave"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/account"
+            android:contentDescription="Profile Icon"/>
+    </LinearLayout>
+
+    <!-- Page Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item List Add"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/navy"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Item Name Label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item Name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Item Name Input Field -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Item Name..."
+        android:background="@drawable/search_background"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Description Label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descriptions"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Description Input Field -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter description..."
+        android:background="@drawable/search_background"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/ilsave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:backgroundTint="@color/navy"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:padding="10dp"/>
+</LinearLayout>

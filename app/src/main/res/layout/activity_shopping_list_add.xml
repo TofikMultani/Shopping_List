@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <!-- Top Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:background="@color/navy">
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/slbacksave"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back1"
+            android:contentDescription="Back Button"
+            android:layout_marginEnd="10dp"/>
+
+        <!-- App Logo -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logo"
+            android:contentDescription="Logo"
+            app:strokeWidth="2dp"
+            app:shapeAppearanceOverlay="@style/CircleImage"
+            android:layout_weight="1"/>
+
+        <!-- Profile Icon -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/account"
+            android:contentDescription="Profile Icon"/>
+    </LinearLayout>
+
+    <!-- Page Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shopping List Add"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/navy"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+
+
+    <!-- Shopping Name Label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shopping Name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Description Field -->
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Shopping Name..."
+        android:background="@drawable/search_background"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Description Label -->
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descriptions"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"/>
+
+    <!-- Description Field -->
+    <EditText
+        android:id="@+id/descEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter description..."
+        android:background="@drawable/search_background"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+    <!-- Date Picker Label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Date"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp" />
+
+    <!-- Date Picker EditText -->
+    <EditText
+        android:id="@+id/dateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pick a date"
+        android:focusable="false"
+        android:background="@drawable/your_custom_edittext_bg"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/slsave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/navy"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:padding="10dp"/>
+
+</LinearLayout>
+

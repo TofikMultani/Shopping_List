@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center_horizontal">
+
+    <!-- Top Blue Rectangle -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/navy"/>
+
+
+    <!-- Circular App Icon -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo"
+        android:contentDescription="App Icon"
+        android:layout_marginTop="40dp"
+        android:scaleType="centerCrop"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp"
+        app:shapeAppearanceOverlay="@style/CircleImage"/>
+
+    <!-- Welcome Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shopping List Application"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- Spacer to Push Button Down -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Get Started Button -->
+    <Button
+        android:id="@+id/btstart"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Get Start"
+        android:backgroundTint="@color/navy"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginBottom="40dp"/>
+
+    <!-- Bottom Blue Rectangle -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/navy"/>
+</LinearLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Top Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navy"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <!-- App Logo -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:contentDescription="App logo"
+            android:src="@drawable/logo" />
+
+        <!-- Profile Icon -->
+        <ImageView
+            android:id="@+id/slacc"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="Profile Icon"
+            android:src="@drawable/account"
+            android:clickable="true"
+            android:focusable="true"
+            />
+    </LinearLayout>
+
+    <!-- Search Bar -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/search_background"
+        android:drawableStart="@drawable/search"
+        android:hint="Search"
+        android:padding="10dp"
+        android:inputType="text"
+        android:textSize="16sp" />
+
+    <!-- Shopping List Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Shopping List"
+        android:textColor="@color/navy"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <!-- New List Button -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shoppingRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/slnlbt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/navy"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="+ New List"
+        android:contentDescription="Create new shopping list"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+</LinearLayout>
