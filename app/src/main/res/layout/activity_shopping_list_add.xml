@@ -70,7 +70,7 @@
 
     <!-- Description Field -->
     <EditText
-        android:id="@+id/nameEditText"
+        android:id="@+id/shoppingName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Shopping Name..."
@@ -93,7 +93,7 @@
 
     <!-- Description Field -->
     <EditText
-        android:id="@+id/descEditText"
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter description..."
@@ -102,28 +102,28 @@
         android:textSize="16sp"
         android:layout_marginBottom="20dp"/>
     <!-- Date Picker Label -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Date"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="16dp" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Select Date"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginTop="16dp" />-->
 
-    <!-- Date Picker EditText -->
-    <EditText
-        android:id="@+id/dateEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Pick a date"
-        android:focusable="false"
-        android:background="@drawable/your_custom_edittext_bg"
-        android:padding="12dp"
-        android:layout_marginTop="8dp"/>
+<!--    &lt;!&ndash; Date Picker EditText &ndash;&gt;-->
+<!--    <EditText-->
+<!--        android:id="@+id/selectedDate"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Pick a date"-->
+<!--        android:focusable="false"-->
+<!--        android:background="@drawable/your_custom_edittext_bg"-->
+<!--        android:padding="12dp"-->
+<!--        android:layout_marginTop="8dp"/>-->
 
     <!-- Save Button -->
     <Button
-        android:id="@+id/slsave"
+        android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"

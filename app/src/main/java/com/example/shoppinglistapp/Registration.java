@@ -1,142 +1,97 @@
 package com.example.shoppinglistapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
+import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class Registration extends AppCompatActivity {
 
-    private EditText rnm, rem, rps, rcps; // Input fields for registration
-    private Button btnSignUp; // Button for sign-up action
-    private TextView tvSignin; // Text for redirecting to sign-in
-    private DatabaseReference databaseReference; // Firebase database reference
+    EditText editTextName, editTextEmail, editTextPassword;
+    Button btnRegister;
+    TextView login;
+    FirebaseAuth mAuth;
 
+    @SuppressLint("WrongViewCast")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        // Initialize input fields and button
-        rnm = findViewById(R.id.rnm);
-        rem = findViewById(R.id.rem);
-        rps = findViewById(R.id.rps);
-        rcps = findViewById(R.id.rcps);
-        btnSignUp = findViewById(R.id.btnSignUp);
-        tvSignin = findViewById(R.id.tvSignin);
+        mAuth = FirebaseAuth.getInstance();
 
-        // Initialize Firebase Realtime Database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        editTextName = findViewById(R.id.rnm);
+        editTextEmail = findViewById(R.id.rem);
+        editTextPassword = findViewById(R.id.rps);
+        btnRegister = findViewById(R.id.btnSignUp);
+        login = findViewById(R.id.login);
 
-        // Handle Sign-Up button click
-        btnSignUp.setOnClickListener(v -> registerUser());
+        btnRegister.setOnClickListener(v -> registerUser());
 
-        // Navigate to Login page on Sign-In text click
-        tvSignin.setOnClickListener(v -> {
-            startActivity(new Intent(Registration.this, Login.class)); // Change to Login.java
-            finish();
+        login.setOnClickListener(v -> {
+            Intent intent = new Intent(Registration.this, Login.class);
+            startActivity(intent); // User manually navigates to Login page
         });
     }
 
     private void registerUser() {
-        String name = rnm.getText().toString().trim();
-        String email = rem.getText().toString().trim();
-        String password = rps.getText().toString().trim();
-        String confirmPassword = rcps.getText().toString().trim();
+        String name = editTextName.getText().toString().trim();
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
 
-        // Input validation
-        if (TextUtils.isEmpty(name)) {
-            rnm.setError("Full Name is required");
+        // Validate inputs
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (TextUtils.isEmpty(email)) {
-            rem.setError("Email is required");
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            editTextEmail.setError("Enter a valid email address");
             return;
         }
 
-        if (TextUtils.isEmpty(password) || password.length() < 6) {
-            rps.setError("Password must be at least 6 characters");
+        if (password.length() < 6) {
+            editTextPassword.setError("Password must be at least 6 characters");
             return;
         }
 
-        if (!password.equals(confirmPassword)) {
-            rcps.setError("Passwords do not match");
-            return;
-        }
+        // Create user in Firebase
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        if (firebaseUser != null) {
+                            // Update Firebase profile with name
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(name)
+                                    .build();
 
-        // Hash the password for security
-        String hashedPassword = hashPassword(password);
-
-        // Check if email is already registered
-        databaseReference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    rem.setError("Email already registered");
-                    Toast.makeText(Registration.this, "User with this email already exists!", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Save user details in Firebase Realtime Database
-                    String userId = databaseReference.push().getKey();
-                    UserModel user = new UserModel(name, email, hashedPassword);
-                    databaseReference.child(userId).setValue(user)
-                            .addOnSuccessListener(aVoid -> {
-                                Toast.makeText(Registration.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Registration.this, Login.class));
-                                finish();
-                            })
-                            .addOnFailureListener(e -> Toast.makeText(Registration.this, "Failed to register!", Toast.LENGTH_SHORT).show());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("Firebase", "Database error: " + error.getMessage());
-            }
-        });
-    }
-
-    private String hashPassword(String password) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                hexString.append(String.format("%02x", b));
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return password; // Fallback (not recommended for production)
-        }
-    }
-
-    // User model class for Firebase data
-    static class UserModel {
-        public String name, email, password;
-
-        public UserModel() {}
-
-        public UserModel(String name, String email, String password) {
-            this.name = name;
-            this.email = email;
-            this.password = password;
-        }
+                            firebaseUser.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(updateTask -> {
+                                        if (updateTask.isSuccessful()) {
+                                            Toast.makeText(this, "Registration successful! You can now log in.", Toast.LENGTH_SHORT).show();
+                                            // Stay on the Registration page, user manually navigates to Login
+                                        } else {
+                                            Toast.makeText(this, "Failed to update profile", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    } else {
+                        Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }

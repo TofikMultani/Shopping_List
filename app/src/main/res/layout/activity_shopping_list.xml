@@ -34,10 +34,12 @@
             android:clickable="true"
             android:focusable="true"
             />
+
     </LinearLayout>
 
     <!-- Search Bar -->
     <EditText
+        android:id="@+id/searchEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -59,27 +61,21 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-
-    <!-- New List Button -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/shoppingRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp"
-        android:scrollbars="vertical" />
-
     <Button
-        android:id="@+id/slnlbt"
+        android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:text="Add Item"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/navy"
-        android:foreground="?attr/selectableItemBackground"
-        android:text="+ New List"
-        android:contentDescription="Create new shopping list"
         android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:padding="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"/>
 </LinearLayout>

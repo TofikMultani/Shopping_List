@@ -17,6 +17,7 @@
 
         <!-- Back Button -->
         <ImageView
+            android:id="@+id/backButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back1"
@@ -25,16 +26,18 @@
     </LinearLayout>
 
     <!-- Profile Image -->
+
+    <!-- Edit Account Title -->
+
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/logo"
-        android:contentDescription="Profile Image"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:contentDescription="Profile Image"
+        android:src="@drawable/logo" />
 
-    <!-- Edit Account Title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,6 +50,7 @@
 
     <!-- Full Name Input -->
     <EditText
+        android:id="@+id/nameEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Full Name"
@@ -58,6 +62,7 @@
 
     <!-- Email Input -->
     <EditText
+        android:id="@+id/emailEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
@@ -69,11 +74,12 @@
 
     <!-- Password Input -->
     <EditText
+        android:id="@+id/passwordEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
         android:drawableStart="@drawable/password2"
-        android:drawableEnd="@drawable/eyes"
+
         android:background="@drawable/card_background"
         android:padding="12dp"
         android:textSize="16sp"
@@ -82,11 +88,12 @@
 
     <!-- Confirm Password Input -->
     <EditText
+        android:id="@+id/confirmPasswordEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Confirm Password"
         android:drawableStart="@drawable/password2"
-        android:drawableEnd="@drawable/eyes"
+
         android:background="@drawable/card_background"
         android:padding="12dp"
         android:textSize="16sp"
@@ -95,6 +102,7 @@
 
     <!-- Save Button -->
     <Button
+        android:id="@+id/saveBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"

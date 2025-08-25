@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -43,16 +42,17 @@
             android:contentDescription="Profile Icon"/>
     </LinearLayout>
 
-    <!-- Search Bar -->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Search"
-        android:drawableStart="@drawable/search"
-        android:background="@drawable/search_background"
-        android:padding="10dp"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"/>
+<!--    &lt;!&ndash; Search Bar &ndash;&gt;-->
+<!--    <EditText-->
+<!--        android:id="@+id/categorySearch"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Search"-->
+<!--        android:drawableStart="@drawable/search"-->
+<!--        android:background="@drawable/search_background"-->
+<!--        android:padding="10dp"-->
+<!--        android:textSize="16sp"-->
+<!--        android:layout_marginTop="16dp"/>-->
 
     <!-- Category List Title -->
     <TextView
@@ -65,113 +65,134 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"/>
 
-    <!-- Categories -->
-    <LinearLayout
+<!--    &lt;!&ndash; Categories &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_marginTop="20dp">-->
+
+<!--        &lt;!&ndash; Category 1: Dairy &ndash;&gt;-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            app:cardBackgroundColor="@color/navy"-->
+<!--            android:layout_marginBottom="10dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="10dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center_vertical">-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/ctitem"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Vegetable"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/white"/>-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Chandan Shop"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:textColor="@color/light_gray"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:src="@drawable/delete"-->
+<!--                    android:contentDescription="Delete"/>-->
+<!--            </LinearLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+<!--        &lt;!&ndash; Category 2: Vegetable &ndash;&gt;-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            app:cardBackgroundColor="@color/navy"-->
+<!--            android:layout_marginBottom="10dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="10dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center_vertical">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Dairy"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="@color/white"/>-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Shiv Dairy"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:textColor="@color/light_gray"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:src="@drawable/delete"-->
+<!--                    android:contentDescription="Delete"/>-->
+<!--            </LinearLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+<!--    </LinearLayout>-->
+
+    <EditText
+        android:id="@+id/inputCategoryName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp">
+        android:hint="Category Name" />
 
-        <!-- Category 1: Dairy -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/navy"
-            android:layout_marginBottom="10dp">
+    <EditText
+        android:id="@+id/inputCategoryDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:id="@+id/ctitem"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Vegetable"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Chandan Shop"
-                        android:textSize="14sp"
-                        android:textColor="@color/light_gray"/>
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/delete"
-                    android:contentDescription="Delete"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Category 2: Vegetable -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/navy"
-            android:layout_marginBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dairy"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Shiv Dairy"
-                        android:textSize="14sp"
-                        android:textColor="@color/light_gray"/>
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/delete"
-                    android:contentDescription="Delete"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
-
-    <!-- New List Button -->
     <Button
-        android:id="@+id/ctbt"
+        android:id="@+id/addCategoryBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+ New List"
+        android:text="Add Category"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/navy"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:layout_marginTop="230dp"/>
+        android:layout_gravity="center"
+        android:padding="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoryRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1" />
+
 </LinearLayout>

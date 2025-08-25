@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,78 +30,62 @@
         android:textColor="@color/black"
         android:layout_marginTop="20dp"/>
 
-    <!-- Email Input Field -->
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        app:endIconMode="clear_text">-->
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Email or User Name"-->
-<!--            android:inputType="textEmailAddress"/>-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
-
+    <!-- Email -->
     <EditText
-        android:id="@+id/lem"
+        android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        />
+        android:layout_marginTop="16dp" />
 
-<!--    &lt;!&ndash; Password Input Field &ndash;&gt;-->
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        app:endIconMode="password_toggle">-->
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Password"-->
-<!--            android:inputType="textPassword"/>-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
-
+    <!-- Password -->
     <EditText
-        android:id="@+id/lps"
+        android:id="@+id/loginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:endIconMode="password_toggle"
         android:hint="Password"
         android:inputType="textPassword"
+        android:layout_marginTop="10dp" />
 
-        />
-
-    <!-- Sign In Button -->
+    <!-- Login Button -->
     <Button
-        android:id="@+id/lbt"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign in"
+        android:text="Login"
         android:backgroundTint="@color/navy"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_marginTop="30dp"/>
 
-    <!-- Or Sign in With Text -->
-
-    <!-- Google Sign-in Button -->
-
-    <TextView
-        android:id="@+id/tvSignUp"
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don’t have an account? Sign Up"
-        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:indeterminate="true"
+        android:layout_marginTop="20dp" />
+
+    <!-- Go to Register -->
+    <TextView
+        android:id="@+id/tvGoToRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account? Register"
         android:textColor="@color/black"
-        android:layout_marginTop="70dp"/>
-
-
-
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="20dp" />
+    <!-- Forgot Password -->
+    <TextView
+        android:id="@+id/forgotPasswordLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password?"
+        android:textColor="@color/navy"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Shopping List App</string>
+
+    <string name="report_title">Item List Report</string>
+    <string name="report_item">Name: %1$s\nDescription: %2$s\nCollected: %3$s</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="pdf_generated_successfully">PDF generated successfully!</string>
+    <string name="error_generating_pdf">Error generating PDF: %1$s</string>
+    <string name="notification_title">PDF Report Generated</string>
+    <string name="notification_text">Tap to view the report</string>
+    <string name="notification_channel_name">PDF Notifications</string>
+
 </resources>

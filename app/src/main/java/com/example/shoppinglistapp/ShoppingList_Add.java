@@ -1,80 +1,96 @@
 package com.example.shoppinglistapp;
 
-import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import java.util.Calendar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class ShoppingList_Add extends AppCompatActivity {
 
-    Button slsave;
+    EditText nameInput, descInput;
+    Button saveBtn;
+    String PREF_NAME;
     ImageView slbacksave;
-    EditText dateEditText;
-    @SuppressLint("MissingInflatedId")
+    SharedPreferences sharedPreferences;
+    ArrayList<shopping_item> itemList = new ArrayList<>();
+    Gson gson = new Gson();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list_add);
 
-        dateEditText = findViewById(R.id.dateEditText);
-        slsave = findViewById(R.id.slsave);
-        slbacksave =findViewById(R.id.slbacksave);
+        nameInput = findViewById(R.id.shoppingName);
+        descInput = findViewById(R.id.description);
+        saveBtn = findViewById(R.id.saveButton);
+        slbacksave = findViewById(R.id.slbacksave);
 
-        slsave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText nameEditText = findViewById(R.id.nameEditText);
-                EditText descEditText = findViewById(R.id.descEditText);
-                EditText dateEditText = findViewById(R.id.dateEditText);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null && currentUser.getUid() != null) {
+            PREF_NAME = "shopping_" + currentUser.getUid(); // ✅ Match this with ShoppingLIst.java
+            sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+            loadList(); // ✅ Load previous data before adding
+        }
 
-                String name = nameEditText.getText().toString();
-                String desc = descEditText.getText().toString();
-                String date = dateEditText.getText().toString();
+        saveBtn.setOnClickListener(v -> {
+            String name = nameInput.getText().toString();
+            String desc = descInput.getText().toString();
+            String date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
 
-                Intent i = new Intent(ShoppingList_Add.this, ShoppingLIst.class);
-                i.putExtra("name", name);
-                i.putExtra("desc", desc);
-                i.putExtra("date", date);
-                startActivity(i);
+            if (name.isEmpty()) {
+                Toast.makeText(this, "Enter item name", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            shopping_item item = new shopping_item(name, desc, date);
+            itemList.add(item);
+            saveList();
+
+            Toast.makeText(this, "Item Saved", Toast.LENGTH_SHORT).show();
+
+            // ✅ Step 4: Force reload main list
+            Intent intent = new Intent(this, ShoppingLIst.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         });
 
         slbacksave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ShoppingList_Add.this, ShoppingLIst.class);
+                Intent i = new Intent(ShoppingList_Add.this,ShoppingLIst.class);
                 startActivity(i);
             }
         });
+    }
 
-        dateEditText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
+    private void loadList() {
+        String json = sharedPreferences.getString(PREF_NAME, "[]");
+        TypeToken<ArrayList<shopping_item>> token = new TypeToken<ArrayList<shopping_item>>() {};
+        itemList = gson.fromJson(json, token.getType());
+    }
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(ShoppingList_Add.this,
-                        (_view, year1, month1, dayOfMonth) -> {String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;dateEditText.setText(selectedDate);
-                        }, year, month, day);
-                datePickerDialog.show();
-            }
-        });
-
+    private void saveList() {
+        String json = gson.toJson(itemList);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(PREF_NAME, json); // ✅ Correct key usage
+        editor.apply();
     }
 }

@@ -1,17 +1,20 @@
 package com.example.shoppinglistapp;
 
-public class ShoppingItem {
+public class CategoryItem {
     private String name;
     private String description;
-    private String date;
 
-    public ShoppingItem(String name, String description, String date) {
+    public CategoryItem(String name, String description) {
         this.name = name;
         this.description = description;
-        this.date = date;
     }
 
     public String getName() { return name; }
+
     public String getDescription() { return description; }
-    public String getDate() { return date; }
+
+    @Override
+    public String toString() {
+        return name + " - " + description;
+    }
 }

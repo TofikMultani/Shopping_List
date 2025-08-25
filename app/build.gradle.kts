@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.google.gms.google.services)
+    id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -33,15 +33,37 @@ android {
 }
 
 dependencies {
+    // Firebase Authentication
+    implementation("com.google.firebase:firebase-auth:22.1.2")
+
+    // Firebase Realtime Database
+    implementation("com.google.firebase:firebase-database:20.3.0")
+    implementation ("com.google.firebase:firebase-auth:22.3.0")
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("com.google.firebase:firebase-database:20.2.1")
+    implementation ("com.google.firebase:firebase-auth:21.0.1")
+    implementation ("com.itextpdf:itext7-core:7.2.2")
+
+
+    implementation ("com.itextpdf:itext7-core:7.1.15")
+    implementation ("androidx.core:core-ktx:1.12.0")
+    implementation("com.airbnb.android:lottie:6.6.3")
+    implementation("androidx.cardview:cardview:1.0.0")
+
+
 
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation("com.airbnb.android:lottie:6.6.3")
-    implementation("androidx.cardview:cardview:1.0.0")
+
     implementation(libs.firebase.database)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+
+

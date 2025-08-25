@@ -68,6 +68,7 @@
 
     <!-- Category Name Input Field -->
     <EditText
+        android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Category Name..."
@@ -89,6 +90,7 @@
 
     <!-- Description Input Field -->
     <EditText
+        android:id="@+id/descEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter description..."

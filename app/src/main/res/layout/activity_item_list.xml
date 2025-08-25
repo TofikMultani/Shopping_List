@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@drawable/rounded_background"
     android:padding="16dp">
 
     <!-- Top Navigation Bar -->
@@ -43,16 +42,6 @@
             android:contentDescription="Profile Icon"/>
     </LinearLayout>
 
-    <!-- Search Bar -->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Search"
-        android:drawableStart="@drawable/search"
-        android:background="@drawable/search_background"
-        android:padding="10dp"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"/>
 
     <!-- Title -->
     <TextView
@@ -65,183 +54,52 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"/>
 
-    <!-- Category Name -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="→ Vegetable"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/navy"
-        android:layout_marginTop="10dp"/>
-
-    <!-- Item List -->
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="10dp">
+        android:padding="16dp"
+        android:background="#FFFFFF">
 
-        <!-- Sample Item Card -->
-        <androidx.cardview.widget.CardView
+        <EditText
+            android:id="@+id/editItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/navy"
-            android:layout_marginBottom="10dp">
+            android:hint="Item Name"
+            android:layout_marginBottom="10dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <!-- Checkbox -->
-                <CheckBox
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"/>
-
-                <!-- Item Details -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <!-- Item Name -->
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tomato"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"/>
-
-                    <!-- Item Weight -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1 Kg"
-                        android:textSize="14sp"
-                        android:textColor="@color/light_gray"/>
-                </LinearLayout>
-
-                <!-- Info Icon -->
-
-                <!-- Delete Icon -->
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/delete"
-                    android:contentDescription="Delete"/>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Repeat the above CardView for more items like Potato, Lemon, Onion -->
-    </LinearLayout>
-
-    <!-- Item List -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp">
-
-        <!-- Sample Item Card -->
-        <androidx.cardview.widget.CardView
+        <EditText
+            android:id="@+id/editItemDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/navy"
-            android:layout_marginBottom="10dp">
+            android:hint="Description"
+            android:layout_marginBottom="10dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <!-- Checkbox -->
-                <CheckBox
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"/>
-
-                <!-- Item Details -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <!-- Item Name -->
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Potato"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"/>
-
-                    <!-- Item Weight -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" Kg"
-                        android:textSize="14sp"
-                        android:textColor="@color/light_gray"/>
-                </LinearLayout>
-
-
-
-                <!-- Delete Icon -->
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/delete"
-                    android:contentDescription="Delete"/>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Repeat the above CardView for more items like Potato, Lemon, Onion -->
-    </LinearLayout>
-
-    <!-- Bottom Buttons -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="230dp">
-
-        <!-- Report Button -->
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/addItemButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Item"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/navy"
+            android:layout_marginBottom="20dp"/>
+        <Button
+            android:id="@+id/report"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Report"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
             android:backgroundTint="@color/navy"
-            android:textColor="@color/white"
-            android:padding="10dp"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginBottom="20dp"/>
 
-        <!-- New List Button -->
-        <Button
-            android:id="@+id/ilbt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+ New List"
-            android:backgroundTint="@color/navy"
-            android:textColor="@color/white"
-            android:padding="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
-
 </LinearLayout>
